@@ -59,6 +59,12 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // Navigator
+    implementation(libs.navigator)
+    implementation(libs.navigator.screen.model)
+    implementation(libs.navigator.transitions)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
