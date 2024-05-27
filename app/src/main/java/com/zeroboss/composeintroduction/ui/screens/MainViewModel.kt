@@ -1,4 +1,4 @@
-package com.zeroboss.composeintroduction
+package com.zeroboss.composeintroduction.ui.screens
 
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
