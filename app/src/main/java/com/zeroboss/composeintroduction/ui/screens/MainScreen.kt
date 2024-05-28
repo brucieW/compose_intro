@@ -19,7 +19,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun MainScreen(
@@ -52,12 +55,16 @@ fun MainScreen(
                 ) {
                     Icon(
                         Icons.AutoMirrored.Rounded.ArrowBack,
-                        contentDescription = "left"
+                        contentDescription = "left",
+                        tint = if (leftButtonEnabled) Color.Blue else Color.DarkGray,
+                        modifier = Modifier.fillMaxSize(1f)
                     )
                 }
 
                 Text(
-                    count.toString()
+                    text = count.toString(),
+                    Modifier.padding(start = 20.dp, end = 20.dp),
+                    fontSize = 40.sp
                 )
 
                 IconButton(
@@ -66,7 +73,9 @@ fun MainScreen(
                 ) {
                     Icon(
                         Icons.AutoMirrored.Rounded.ArrowForward,
-                        contentDescription = "right"
+                        contentDescription = "right",
+                        tint = if (rightButtonEnabled) Color.Blue else Color.DarkGray,
+                        modifier = Modifier.fillMaxSize(1f)
                     )
                 }
             }
@@ -77,7 +86,9 @@ fun MainScreen(
 @Preview
 @Composable
 fun ShowMainScreen() {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+    Scaffold(
+        modifier = Modifier.fillMaxSize()
+    ) { innerPadding ->
         MainScreen(MainViewModel(), innerPadding)
     }
 }

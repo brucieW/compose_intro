@@ -20,7 +20,7 @@ class MainViewModel : ViewModel() {
         leftButtonEnabled.value = true
         ++count.intValue
 
-        if (count.intValue == 10) {
+        if (count.intValue == 5) {
             rightButtonEnabled.value = false
         }
     }
