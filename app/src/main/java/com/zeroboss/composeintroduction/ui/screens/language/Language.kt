@@ -1,4 +1,4 @@
-package com.zeroboss.composeintroduction.ui.screens
+package com.zeroboss.composeintroduction.ui.screens.language
 
 enum class ComputerLanguage(relativeUsage: Usage, notes: String) {
     Python(

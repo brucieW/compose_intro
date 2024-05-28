@@ -1,4 +1,4 @@
-package com.zeroboss.composeintroduction.ui.screens
+package com.zeroboss.composeintroduction.ui.screens.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
