@@ -57,7 +57,7 @@ fun MainScreen(
                         Icons.AutoMirrored.Rounded.ArrowBack,
                         contentDescription = "left",
                         tint = if (leftButtonEnabled) Color.Blue else Color.DarkGray,
-                        modifier = Modifier.fillMaxSize(1f)
+                        modifier = Modifier.fillMaxSize()
                     )
                 }
 
@@ -75,7 +75,7 @@ fun MainScreen(
                         Icons.AutoMirrored.Rounded.ArrowForward,
                         contentDescription = "right",
                         tint = if (rightButtonEnabled) Color.Blue else Color.DarkGray,
-                        modifier = Modifier.fillMaxSize(1f)
+                        modifier = Modifier.fillMaxSize()
                     )
                 }
             }
