@@ -1,4 +1,4 @@
-package com.zeroboss.composeintroduction.ui.screens.language
+package com.zeroboss.composeintroduction.ui.screens.lazy_row
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
@@ -30,41 +30,44 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.zeroboss.composeintroduction.ui.screens.language.ComputerLanguage.Companion.getImage
-import com.zeroboss.composeintroduction.ui.screens.language.Constants.selectedColor
+import cafe.adriel.voyager.core.screen.Screen
+import com.zeroboss.composeintroduction.ui.common.ComputerLanguage
+import com.zeroboss.composeintroduction.ui.common.ComputerLanguage.Companion.getImage
+import com.zeroboss.composeintroduction.ui.common.Constants.selectedColor
+import com.zeroboss.composeintroduction.ui.common.LanguageTitle
 import com.zeroboss.composeintroduction.ui.theme.ComposeIntroductionTheme
 
-@Composable
-fun LanguageScreen(
-    languageViewModel: LanguageViewModel
-) {
-    Surface(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
+class LazyRowScreen(
+    private val lazyRowViewModel: LazyRowViewModel
+) : Screen {
+    @Composable
+    override fun Content() {
+        Surface(
+            modifier = Modifier.fillMaxSize()
         ) {
-            val selectedLanguage by languageViewModel.selectedItem
-
-            LazyRow(
+            Column(
                 modifier = Modifier
-                    .padding(10.dp)
                     .fillMaxWidth()
+                    .padding(top = 20.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                items(ComputerLanguage.entries) { language ->
-                    RowItem(language, languageViewModel)
-                }
-            }
+                val selectedLanguage by lazyRowViewModel.selectedItem
 
-            LanguageDetails(selectedLanguage)
+                LazyRow(
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .fillMaxWidth()
+                ) {
+                    items(ComputerLanguage.entries) { language ->
+                        RowItem(language, lazyRowViewModel)
+                    }
+                }
+
+                LanguageDetails(selectedLanguage)
+            }
         }
     }
 }
-
-
 
 @Composable
 fun LanguageDetails(
@@ -121,9 +124,9 @@ fun LanguageDetails(
 @Composable
 fun RowItem(
     language: ComputerLanguage,
-    languageViewModel: LanguageViewModel
+    lazyRowViewModel: LazyRowViewModel
 ) {
-    val selectedItem by languageViewModel.selectedItem
+    val selectedItem by lazyRowViewModel.selectedItem
 
     Card(
         modifier = Modifier
@@ -134,7 +137,7 @@ fun RowItem(
         colors = CardDefaults.cardColors(
             containerColor = if (selectedItem == language) selectedColor else Color.White
         ),
-        onClick = { languageViewModel.onClick(language) },
+        onClick = { lazyRowViewModel.onClick(language) },
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
         Box(
@@ -149,32 +152,6 @@ fun RowItem(
     }
 }
 
-@Composable
-fun LanguageTitle(
-    language: ComputerLanguage,
-    modifier: Modifier = Modifier
-) {
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Image(
-            painter = getImage(language),
-            modifier = Modifier.padding(end = 20.dp),
-            contentDescription = ""
-        )
-
-        Text(
-            text = language.languageName,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.SemiBold,
-            textAlign = TextAlign.Center
-        )
-    }
-
-}
-
 @Preview
 @Composable
 private fun ShowRowItem() {
@@ -184,7 +161,7 @@ private fun ShowRowItem() {
                 .padding(10.dp)
                 .fillMaxWidth()
         ) {
-            RowItem(ComputerLanguage.ObjectiveC, LanguageViewModel())
+            RowItem(ComputerLanguage.ObjectiveC, LazyRowViewModel())
         }
     }
 }

@@ -1,10 +1,10 @@
-package com.zeroboss.composeintroduction.ui.screens.main
+package com.zeroboss.composeintroduction.ui.screens.counter
 
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 
-class MainViewModel : ViewModel() {
+class CounterViewModel : ViewModel() {
     val leftButtonEnabled = mutableStateOf(false)
     val rightButtonEnabled = mutableStateOf(true)
 

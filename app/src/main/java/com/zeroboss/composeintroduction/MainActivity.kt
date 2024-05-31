@@ -4,8 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.zeroboss.composeintroduction.ui.screens.language.LanguageScreen
-import com.zeroboss.composeintroduction.ui.screens.language.LanguageViewModel
+import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.SlideTransition
+import com.zeroboss.composeintroduction.ui.screens.home.HomeScreen
 import com.zeroboss.composeintroduction.ui.theme.ComposeIntroductionTheme
 
 class MainActivity : ComponentActivity() {
@@ -14,7 +15,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ComposeIntroductionTheme {
-                LanguageScreen(LanguageViewModel())
+                Navigator(HomeScreen()) {
+                    SlideTransition(it)
+                }
             }
         }
     }

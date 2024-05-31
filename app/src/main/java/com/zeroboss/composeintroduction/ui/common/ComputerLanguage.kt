@@ -1,4 +1,4 @@
-package com.zeroboss.composeintroduction.ui.screens.language
+package com.zeroboss.composeintroduction.ui.common
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
