@@ -134,7 +134,7 @@ enum class ComputerLanguage(
     }
 }
 
-enum class Usage(text: String) {
+enum class Usage(val text: String) {
     VeryHigh("Very High"),
     High("High"),
     ModerateToHigh("Moderate to High"),
