@@ -58,6 +58,7 @@ fun LanguageTitleColumn(
 
         Text(
             text = language.languageName,
+            modifier = Modifier.padding(top = 20.dp),
             fontSize = 24.sp,
             fontWeight = FontWeight.SemiBold,
             textAlign = TextAlign.Center
