@@ -34,8 +34,6 @@ class LazyColumnScreen(
         Surface(
             modifier = Modifier.fillMaxSize()
         ) {
-            val selectedLanguage by lazyColumnViewModel.selectedItem
-
             LazyColumn(
                 modifier = Modifier
                     .padding(20.dp)
