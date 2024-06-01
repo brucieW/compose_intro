@@ -112,7 +112,7 @@ fun LanguageColumnDetails(
             }
 
             Text(
-                modifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 20.dp),
+                modifier = Modifier.padding(start = 10.dp, end = 20.dp, bottom = 20.dp),
                 text = language.notes,
                 fontSize = 18.sp,
                 overflow = TextOverflow.Visible
