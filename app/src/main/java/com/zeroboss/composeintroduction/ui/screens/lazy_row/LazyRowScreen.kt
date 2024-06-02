@@ -42,84 +42,28 @@ class LazyRowScreen(
 ) : Screen {
     @Composable
     override fun Content() {
-        Surface(
-            modifier = Modifier.fillMaxSize()
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Column(
+            val selectedLanguage by lazyRowViewModel.selectedItem
+
+            LazyRow(
                 modifier = Modifier
+                    .padding(10.dp)
                     .fillMaxWidth()
-                    .padding(top = 20.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                val selectedLanguage by lazyRowViewModel.selectedItem
-
-                LazyRow(
-                    modifier = Modifier
-                        .padding(10.dp)
-                        .fillMaxWidth()
-                ) {
-                    items(ComputerLanguage.entries) { language ->
-                        RowItem(language, lazyRowViewModel)
-                    }
+                items(ComputerLanguage.entries) { language ->
+                    RowItem(language, lazyRowViewModel)
                 }
-
-                LanguageDetails(selectedLanguage)
             }
+
+            LanguageDetails(selectedLanguage)
         }
     }
 }
-
-@Composable
-fun LanguageDetails(
-    language: ComputerLanguage?,
-) {
-    val expanded = language != null
-
-    Card(
-        modifier = Modifier
-            .padding(20.dp)
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
-            .animateContentSize(),
-//                animationSpec = tween(durationMillis = 500, easing = LinearOutSlowInEasing)
-//            ),
-        colors = CardDefaults.cardColors(containerColor = selectedColor),
-        elevation = CardDefaults.cardElevation(10.dp)
-    ) {
-        if (expanded) {
-            Box(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column {
-                    LanguageTitle(language!!, modifier = Modifier.padding(start = 20.dp, top = 20.dp))
-
-                    Row(
-                        modifier = Modifier.padding(20.dp)
-                    ) {
-                        Text(
-                            text = "Relative Usage: ",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.SemiBold
-                        )
-
-                        Text(
-                            text = language.relativeUsage.text,
-                            fontSize = 18.sp
-                        )
-                    }
-
-                    Text(
-                        modifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 20.dp),
-                        text = language.notes,
-                        fontSize = 18.sp,
-                        overflow = TextOverflow.Visible
-                    )
-                }
-            }
-        }
-    }
-}
-
 
 @Composable
 fun RowItem(
@@ -148,6 +92,58 @@ fun RowItem(
             contentAlignment = Alignment.Center
         ) {
             LanguageTitle(language)
+        }
+    }
+}
+
+@Composable
+fun LanguageDetails(
+    language: ComputerLanguage?,
+) {
+    val expanded = language != null
+
+    Card(
+        modifier = Modifier
+            .padding(20.dp)
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .animateContentSize(),
+        colors = CardDefaults.cardColors(containerColor = selectedColor),
+        elevation = CardDefaults.cardElevation(10.dp)
+    ) {
+        if (expanded) {
+            Box(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column {
+                    LanguageTitle(
+                        language!!,
+                        modifier = Modifier.padding(start = 20.dp, top = 20.dp)
+                    )
+
+                    Row(
+                        modifier = Modifier.padding(20.dp)
+                    ) {
+                        Text(
+                            text = "Relative Usage: ",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.SemiBold
+                        )
+
+                        Text(
+                            text = language.relativeUsage.text,
+                            fontSize = 18.sp
+                        )
+                    }
+
+                    Text(
+                        modifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 20.dp),
+                        text = language.notes,
+                        fontSize = 18.sp,
+                        overflow = TextOverflow.Visible
+                    )
+                }
+            }
         }
     }
 }
