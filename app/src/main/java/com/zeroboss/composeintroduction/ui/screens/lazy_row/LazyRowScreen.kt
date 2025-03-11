@@ -112,7 +112,7 @@ fun LanguageDetails(
             ) {
                 Column {
                     LanguageTitle(
-                        language!!,
+                        language,
                         modifier = Modifier.padding(start = 20.dp, top = 20.dp)
                     )
 
