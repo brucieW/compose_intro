@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
@@ -20,6 +21,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun MainScreen(
@@ -47,6 +50,9 @@ fun MainScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
+                    modifier = Modifier
+                        .size(48.dp)
+                        .fillMaxSize(),
                     onClick = { mainViewModel.decrementCount() },
                     enabled = leftButtonEnabled
                 ) {
@@ -57,10 +63,12 @@ fun MainScreen(
                 }
 
                 Text(
-                    count.toString()
+                    fontSize = 48.sp,
+                    text= count.toString()
                 )
 
                 IconButton(
+                    modifier = Modifier.size(32.dp),
                     onClick = { mainViewModel.incrementCount() },
                     enabled = rightButtonEnabled
                 ) {
