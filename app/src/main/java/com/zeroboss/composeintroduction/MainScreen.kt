@@ -1,5 +1,7 @@
 package com.zeroboss.composeintroduction
 
+import android.R.attr.contentDescription
+import android.R.attr.end
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -20,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,30 +53,31 @@ fun MainScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
-                    modifier = Modifier
-                        .size(48.dp)
-                        .fillMaxSize(),
                     onClick = { mainViewModel.decrementCount() },
                     enabled = leftButtonEnabled
                 ) {
                     Icon(
                         Icons.AutoMirrored.Rounded.ArrowBack,
+                        tint = if (leftButtonEnabled) Color.Blue else Color.DarkGray,
+                        modifier = Modifier.fillMaxSize(),
                         contentDescription = "left"
                     )
                 }
 
                 Text(
+                    modifier = Modifier.padding(start = 16.dp, end = 16.dp),
                     fontSize = 48.sp,
                     text= count.toString()
                 )
 
                 IconButton(
-                    modifier = Modifier.size(32.dp),
                     onClick = { mainViewModel.incrementCount() },
                     enabled = rightButtonEnabled
                 ) {
                     Icon(
                         Icons.AutoMirrored.Rounded.ArrowForward,
+                        tint = if (rightButtonEnabled) Color.Blue else Color.DarkGray,
+                        modifier = Modifier.fillMaxSize(),
                         contentDescription = "right"
                     )
                 }
